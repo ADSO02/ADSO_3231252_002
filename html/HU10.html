@@ -9,8 +9,6 @@
 </head>
 <body>
 <div class="layout">
-
-  <!-- ── SIDEBAR ── -->
   <aside class="sidebar">
     <div class="logo">
       <div class="logo-text">PARKALIA</div>
@@ -39,7 +37,6 @@
     </div>
   </aside>
 
-  <!-- ── MAIN ── -->
   <div class="main">
     <div class="topbar">
       <div class="topbar-title">Panel de Control</div>
@@ -57,7 +54,6 @@
 
     <div class="content">
 
-      <!-- Header -->
       <div class="section-header">
         <div>
           <div class="section-title">Panel de Control</div>
@@ -66,10 +62,8 @@
         <div class="role-badge">🔐 Administrador</div>
       </div>
 
-      <!-- ── KPI CARDS ── -->
       <div class="kpi-grid">
 
-        <!-- CA-1: Reservaciones activas -->
         <div class="kpi-card blue">
           <div class="kpi-header">
             <div class="kpi-label">Reservas Activas</div>
@@ -82,7 +76,6 @@
           </div>
         </div>
 
-        <!-- CA-2: Ingresos totales -->
         <div class="kpi-card green">
           <div class="kpi-header">
             <div class="kpi-label">Ingresos Totales</div>
@@ -95,7 +88,6 @@
           </div>
         </div>
 
-        <!-- CA-3: Ocupación promedio -->
         <div class="kpi-card warning">
           <div class="kpi-header">
             <div class="kpi-label">Ocupación Promedio</div>
@@ -108,7 +100,6 @@
           </div>
         </div>
 
-        <!-- CA-4: Usuarios registrados -->
         <div class="kpi-card danger">
           <div class="kpi-header">
             <div class="kpi-label">Usuarios Registrados</div>
@@ -123,10 +114,8 @@
 
       </div>
 
-      <!-- ── BOTTOM GRID: Ocupación por zona + Actividad reciente ── -->
       <div class="bottom-grid">
 
-        <!-- CA-3: Ocupación por zona -->
         <div class="panel-card">
           <div class="panel-header">
             <div class="panel-title">
@@ -136,11 +125,9 @@
             <span class="badge badge-blue" id="active-zones-badge">4 zonas</span>
           </div>
           <div class="panel-body" id="zone-occupancy-body">
-            <!-- Renderizado por JS -->
           </div>
         </div>
 
-        <!-- CA-6: Actividad reciente -->
         <div class="panel-card" style="animation-delay:0.30s;">
           <div class="panel-header">
             <div class="panel-title">
@@ -151,17 +138,14 @@
           </div>
           <div class="panel-body">
             <div class="activity-list" id="activity-list">
-              <!-- Renderizado por JS -->
             </div>
           </div>
         </div>
 
       </div>
 
-      <!-- ── THIRD ROW ── -->
       <div class="third-grid">
 
-        <!-- Estado de zonas (donut) -->
         <div class="panel-card" style="animation-delay:0.35s;">
           <div class="panel-header">
             <div class="panel-title">
@@ -198,7 +182,6 @@
           </div>
         </div>
 
-        <!-- Resumen financiero -->
         <div class="panel-card" style="animation-delay:0.40s;">
           <div class="panel-header">
             <div class="panel-title">
@@ -208,12 +191,10 @@
           </div>
           <div class="panel-body">
             <div class="mini-stats" id="financial-stats">
-              <!-- Renderizado por JS -->
             </div>
           </div>
         </div>
 
-        <!-- Top zonas por ingresos -->
         <div class="panel-card" style="animation-delay:0.45s;">
           <div class="panel-header">
             <div class="panel-title">
@@ -233,18 +214,15 @@
                 </tr>
               </thead>
               <tbody id="top-zones-body">
-                <!-- Renderizado por JS -->
               </tbody>
             </table>
           </div>
         </div>
 
       </div>
-      <!-- end third-grid -->
-
-    </div><!-- end content -->
-  </div><!-- end main -->
-</div><!-- end layout -->
+    </div>
+  </div>
+</div>
 
 <script src="../js/hu10-script.js"></script>
 </body>

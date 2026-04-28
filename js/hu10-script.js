@@ -120,9 +120,34 @@ function enforceAdminAccess() {
   return false;
 }
 
-if (enforceAdminAccess()) {
+function renderAllCriteria() {
   renderCriterionOne();
   renderCriterionTwo();
   renderCriterionThree();
   renderCriterionFour();
+}
+
+function refreshDashboard() {
+  ZONES.forEach(zone => {
+    const delta = Math.floor(Math.random() * 3) - 1;
+    zone.available = Math.max(0, Math.min(zone.capacity, zone.available + delta));
+    zone.reservations = zone.capacity - zone.available;
+  });
+
+  renderAllCriteria();
+
+  const updateEl = document.getElementById('last-update-text');
+  if (!updateEl) return;
+  const now = new Date();
+  const h = String(now.getHours()).padStart(2, '0');
+  const m = String(now.getMinutes()).padStart(2, '0');
+  const s = String(now.getSeconds()).padStart(2, '0');
+  updateEl.textContent = `Actualizado ${h}:${m}:${s}`;
+}
+
+if (enforceAdminAccess()) {
+  renderAllCriteria();
+  const refreshBtn = document.getElementById('btn-refresh');
+  if (refreshBtn) refreshBtn.addEventListener('click', refreshDashboard);
+  setInterval(refreshDashboard, 30000);
 }
