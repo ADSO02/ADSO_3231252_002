@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PARKALIA - Panel de Control</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/hu10-style.css" />
+</head>
+<body>
+<div class="layout">
+
+  <!-- ── SIDEBAR ── -->
+  <aside class="sidebar">
+    <div class="logo">
+      <div class="logo-text">PARKALIA</div>
+    </div>
+    <nav class="nav">
+      <div class="nav-label">Principal</div>
+      <div class="nav-item active"><span class="icon">📊</span> Panel de control</div>
+      <div class="nav-item"><span class="icon">🚗</span> Vehículos</div>
+      <div class="nav-item"><span class="icon">⬡</span> Zonas</div>
+      <div class="nav-label">Actividad</div>
+      <div class="nav-item"><span class="icon">📋</span> Reservaciones</div>
+      <div class="nav-item"><span class="icon">💳</span> Pagos</div>
+      <div class="nav-item"><span class="icon">🕐</span> Historial</div>
+      <div class="nav-label">Sistema</div>
+      <div class="nav-item"><span class="icon">👥</span> Usuarios</div>
+      <div class="nav-item"><span class="icon">⚙️</span> Configuración</div>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="user-chip">
+        <div class="avatar">TV</div>
+        <div class="user-info">
+          <div class="user-name">t_vxrgas</div>
+          <div class="user-role">Administrador</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ── MAIN ── -->
+  <div class="main">
+    <div class="topbar">
+      <div class="topbar-title">Panel de Control</div>
+      <div class="topbar-right">
+        <div class="last-update">
+          <div class="pulse-dot"></div>
+          <span id="last-update-text">Actualizado ahora</span>
+        </div>
+        <button class="btn-refresh" id="btn-refresh">
+          <span class="refresh-icon" id="refresh-icon">↻</span>
+          Actualizar
+        </button>
+      </div>
+    </div>
+
+    <div class="content">
+
+      <!-- Header -->
+      <div class="section-header">
+        <div>
+          <div class="section-title">Panel de Control</div>
+          <div class="section-sub">Resumen de actividad y métricas del sistema en tiempo real</div>
+        </div>
+        <div class="role-badge">🔐 Administrador</div>
+      </div>
+
+      <!-- ── KPI CARDS ── -->
+      <div class="kpi-grid">
+
+        <!-- CA-1: Reservaciones activas -->
+        <div class="kpi-card blue">
+          <div class="kpi-header">
+            <div class="kpi-label">Reservas Activas</div>
+            <div class="kpi-icon blue">📋</div>
+          </div>
+          <div class="kpi-value blue" id="kpi-reservations">0</div>
+          <div class="kpi-meta">
+            Total activas en el sistema
+            <span class="kpi-trend up">▲ +2 hoy</span>
+          </div>
+        </div>
+
+        <!-- CA-2: Ingresos totales -->
+        <div class="kpi-card green">
+          <div class="kpi-header">
+            <div class="kpi-label">Ingresos Totales</div>
+            <div class="kpi-icon green">💳</div>
+          </div>
+          <div class="kpi-value green" id="kpi-revenue">$0</div>
+          <div class="kpi-meta">
+            Pagos procesados
+            <span class="kpi-trend up">▲ +8% este mes</span>
+          </div>
+        </div>
+
+        <!-- CA-3: Ocupación promedio -->
+        <div class="kpi-card warning">
+          <div class="kpi-header">
+            <div class="kpi-label">Ocupación Promedio</div>
+            <div class="kpi-icon warning">⬡</div>
+          </div>
+          <div class="kpi-value warning" id="kpi-occupancy">0%</div>
+          <div class="kpi-meta">
+            Sobre todas las zonas
+            <span class="kpi-trend down">▼ -3% vs ayer</span>
+          </div>
+        </div>
+
+        <!-- CA-4: Usuarios registrados -->
+        <div class="kpi-card danger">
+          <div class="kpi-header">
+            <div class="kpi-label">Usuarios Registrados</div>
+            <div class="kpi-icon danger">👥</div>
+          </div>
+          <div class="kpi-value danger" id="kpi-users">0</div>
+          <div class="kpi-meta">
+            Cuentas en el sistema
+            <span class="kpi-trend up">▲ +5 este mes</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ── BOTTOM GRID: Ocupación por zona + Actividad reciente ── -->
+      <div class="bottom-grid">
+
+        <!-- CA-3: Ocupación por zona -->
+        <div class="panel-card">
+          <div class="panel-header">
+            <div class="panel-title">
+              <div class="panel-dot"></div>
+              Ocupación por Zona
+            </div>
+            <span class="badge badge-blue" id="active-zones-badge">4 zonas</span>
+          </div>
+          <div class="panel-body" id="zone-occupancy-body">
+            <!-- Renderizado por JS -->
+          </div>
+        </div>
+
+        <!-- CA-6: Actividad reciente -->
+        <div class="panel-card" style="animation-delay:0.30s;">
+          <div class="panel-header">
+            <div class="panel-title">
+              <div class="panel-dot"></div>
+              Actividad Reciente
+            </div>
+            <span class="badge badge-green">En vivo</span>
+          </div>
+          <div class="panel-body">
+            <div class="activity-list" id="activity-list">
+              <!-- Renderizado por JS -->
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ── THIRD ROW ── -->
+      <div class="third-grid">
+
+        <!-- Estado de zonas (donut) -->
+        <div class="panel-card" style="animation-delay:0.35s;">
+          <div class="panel-header">
+            <div class="panel-title">
+              <div class="panel-dot"></div>
+              Estado de Zonas
+            </div>
+          </div>
+          <div class="panel-body">
+            <div class="donut-wrap">
+              <svg class="donut-svg" width="120" height="120" viewBox="0 0 120 120">
+                <circle cx="60" cy="60" r="44" fill="none" stroke="#1E2A3A" stroke-width="12"/>
+                <circle id="donut-active" cx="60" cy="60" r="44" fill="none" stroke="#3DBE6C" stroke-width="12"
+                  stroke-dasharray="0 276.46" stroke-linecap="round"
+                  transform="rotate(-90 60 60)" style="transition: stroke-dasharray 1s ease;"/>
+                <circle id="donut-inactive" cx="60" cy="60" r="44" fill="none" stroke="#E8404A" stroke-width="12"
+                  stroke-dasharray="0 276.46" stroke-linecap="round"
+                  transform="rotate(-90 60 60)" style="transition: stroke-dasharray 1s ease; transition-delay:0.2s;"/>
+                <text x="60" y="55" text-anchor="middle" fill="#E8EDF5" font-family="Syne, sans-serif" font-size="18" font-weight="800" id="donut-center-val">0</text>
+                <text x="60" y="70" text-anchor="middle" fill="#5A6A7E" font-family="DM Sans, sans-serif" font-size="10">zonas</text>
+              </svg>
+              <div class="donut-legend">
+                <div class="legend-item">
+                  <div class="legend-dot" style="background:var(--green);"></div>
+                  <div class="legend-label">Activas</div>
+                  <div class="legend-val" id="legend-active">—</div>
+                </div>
+                <div class="legend-item">
+                  <div class="legend-dot" style="background:var(--danger);"></div>
+                  <div class="legend-label">Inactivas</div>
+                  <div class="legend-val" id="legend-inactive">—</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Resumen financiero -->
+        <div class="panel-card" style="animation-delay:0.40s;">
+          <div class="panel-header">
+            <div class="panel-title">
+              <div class="panel-dot"></div>
+              Resumen Financiero
+            </div>
+          </div>
+          <div class="panel-body">
+            <div class="mini-stats" id="financial-stats">
+              <!-- Renderizado por JS -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Top zonas por ingresos -->
+        <div class="panel-card" style="animation-delay:0.45s;">
+          <div class="panel-header">
+            <div class="panel-title">
+              <div class="panel-dot"></div>
+              Top Zonas
+            </div>
+            <span class="badge badge-warning">Por ingresos</span>
+          </div>
+          <div class="panel-body" style="padding-top:8px;">
+            <table class="mini-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Zona</th>
+                  <th>Ingresos</th>
+                  <th>Ocup.</th>
+                </tr>
+              </thead>
+              <tbody id="top-zones-body">
+                <!-- Renderizado por JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+      <!-- end third-grid -->
+
+    </div><!-- end content -->
+  </div><!-- end main -->
+</div><!-- end layout -->
+
+<script src="../js/hu10-script.js"></script>
+</body>
+</html>
