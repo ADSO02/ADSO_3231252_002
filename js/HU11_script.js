@@ -45,6 +45,23 @@ let usuarioSeleccionado = null;
 let accionToggle = null;
 
 // =========================
+// [NUEVO] HAMBURGUESA
+// =========================
+const hamburger = document.getElementById("hamburger");
+const sidebar   = document.getElementById("sidebar");
+const overlay   = document.getElementById("sidebarOverlay");
+
+hamburger.addEventListener("click", () => {
+  sidebar.classList.toggle("open");
+  overlay.classList.toggle("active");
+});
+
+overlay.addEventListener("click", () => {
+  sidebar.classList.remove("open");
+  overlay.classList.remove("active");
+});
+
+// =========================
 // SUBCARDS
 // =========================
 function actualizarCards() {
@@ -60,6 +77,45 @@ function actualizarCards() {
 }
 
 // =========================
+// [NUEVO] TARJETAS MÓVIL
+// =========================
+function renderTarjetasMobil(lista) {
+  document.querySelectorAll(".user-card-mobile").forEach(el => el.remove());
+
+  const tablaCard = document.querySelector(".tabla-card");
+
+  lista.forEach((u) => {
+    const index = usuarios.indexOf(u);
+    const card = document.createElement("div");
+    card.classList.add("user-card-mobile");
+
+    card.innerHTML = `
+      <div class="ucm-top">
+        <div class="ucm-info">
+          <b>${u.nombre}</b>
+          <small>${u.correo}</small>
+        </div>
+        <span class="estado estado-${u.estado}">
+          ${u.estado === "activo" ? "Activo" : "Inactivo"}
+        </span>
+      </div>
+      <div class="ucm-meta">
+        <span class="rol ${u.rol === "Administrador" ? "admin" : ""}">${u.rol}</span>
+        <span>📅 ${u.fecha}</span>
+        <span>🔖 ${u.reservas} reservas</span>
+      </div>
+      <div class="ucm-acciones">
+        <button class="btn editar" data-index="${index}">✏️</button>
+        <button class="btn toggle" data-index="${index}">⏸️</button>
+        <button class="btn delete" data-index="${index}">🗑️</button>
+      </div>
+    `;
+
+    tablaCard.after(card);
+  });
+}
+
+// =========================
 // RENDER TABLA
 // =========================
 function renderTabla() {
@@ -67,7 +123,7 @@ function renderTabla() {
   const cont = document.querySelector(".tabla-body");
   cont.innerHTML = "";
 
-  usuarios
+  const lista = usuarios
     .filter(u => {
       if (filtroActual === "activo") return u.estado === "activo";
       if (filtroActual === "inactivo") return u.estado === "inactivo";
@@ -79,8 +135,9 @@ function renderTabla() {
         u.nombre.toLowerCase().includes(textoBusqueda) ||
         u.correo.toLowerCase().includes(textoBusqueda)
       );
-    })
-    .forEach((u) => {
+    });
+
+  lista.forEach((u) => {
 
       const index = usuarios.indexOf(u);
 
@@ -113,6 +170,9 @@ function renderTabla() {
 
       cont.appendChild(row);
     });
+
+  // [NUEVO] también renderizar tarjetas móvil
+  renderTarjetasMobil(lista);
 
   actualizarCards();
 }
@@ -159,6 +219,8 @@ document.addEventListener("click", (e) => {
     document.querySelector(".tabla-card").classList.add("oculto");
     document.querySelector(".cards").classList.add("oculto");
     document.querySelector(".filtros").classList.add("oculto");
+    // [NUEVO] ocultar tarjetas móvil
+    document.querySelectorAll(".user-card-mobile").forEach(el => el.classList.add("oculto"));
     document.getElementById("vista-editar").classList.remove("oculto");
   }
 
@@ -204,6 +266,8 @@ document.addEventListener("click", (e) => {
     document.querySelector(".tabla-card").classList.add("oculto");
     document.querySelector(".cards").classList.add("oculto");
     document.querySelector(".filtros").classList.add("oculto");
+    // [NUEVO] ocultar tarjetas móvil
+    document.querySelectorAll(".user-card-mobile").forEach(el => el.classList.add("oculto"));
 
     document.getElementById("vista-toggle").classList.remove("oculto");
   }
@@ -244,6 +308,8 @@ document.addEventListener("click", (e) => {
     document.querySelector(".tabla-card").classList.add("oculto");
     document.querySelector(".cards").classList.add("oculto");
     document.querySelector(".filtros").classList.add("oculto");
+    // [NUEVO] ocultar tarjetas móvil
+    document.querySelectorAll(".user-card-mobile").forEach(el => el.classList.add("oculto"));
 
     document.getElementById("vista-eliminar").classList.remove("oculto");
   }

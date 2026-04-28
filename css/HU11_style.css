@@ -596,3 +596,192 @@ body {
     opacity: 1;
   }
 }
+
+
+/* ================================================ */
+/* RESPONSIVE — solo adiciones, nada de lo anterior */
+/* fue modificado                                   */
+/* ================================================ */
+
+/* Hamburguesa — oculta en desktop */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: #8B949E;
+  border-radius: 2px;
+}
+
+/* Overlay oscuro al abrir sidebar en móvil */
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 150;
+}
+.sidebar-overlay.active {
+  display: block;
+}
+
+/* Sidebar abierto en móvil */
+.sidebar.open {
+  transform: translateX(0) !important;
+  box-shadow: 4px 0 24px rgba(0,0,0,0.5);
+}
+
+/* Tarjetas móvil — ocultas por defecto */
+.user-card-mobile {
+  display: none;
+  background: #161B22;
+  border: 1px solid #21262D;
+  border-radius: 12px;
+  padding: 14px;
+  margin-bottom: 10px;
+}
+.ucm-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.ucm-info b    { font-size: 14px; color: #fff; }
+.ucm-info small{ display: block; font-size: 12px; color: #8B949E; }
+.ucm-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+  font-size: 12px;
+  color: #8B949E;
+}
+.ucm-acciones { display: flex; gap: 8px; }
+
+/* ========================= */
+/* TABLET (≤ 900px)          */
+/* ========================= */
+@media (max-width: 900px) {
+
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+    height: auto;
+  }
+
+  .filtros {
+    flex-wrap: wrap;
+  }
+
+  #buscador {
+    width: 100%;
+  }
+
+  .tabla-header,
+  .fila {
+    grid-template-columns: 2fr 1fr 1fr 0.6fr 1fr 1.2fr;
+    font-size: 13px;
+  }
+}
+
+/* ========================= */
+/* MÓVIL (≤ 640px)           */
+/* ========================= */
+@media (max-width: 640px) {
+
+  /* Sidebar off-canvas */
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    z-index: 200;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    overflow-y: auto;
+  }
+
+  /* Main ocupa todo el ancho */
+  .main {
+    width: 100%;
+    overflow-y: auto;
+  }
+
+  /* Header con hamburguesa */
+  .hamburger {
+    display: flex;
+  }
+  .top-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+  }
+
+  /* Content más compacto */
+  .content {
+    padding: 16px;
+  }
+
+  /* Cards 2 columnas */
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+    height: auto;
+    gap: 10px;
+  }
+
+  .info h3 { font-size: 28px; }
+
+  /* Filtros en columna */
+  .filtros {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  #buscador {
+    width: 100%;
+    height: 42px;
+  }
+
+  .botones {
+    width: 100%;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 4px;
+  }
+
+  .botones button { flex-shrink: 0; }
+
+  /* Tabla: ocultar header y filas, mostrar tarjetas */
+  .tabla-header { display: none; }
+  .fila         { display: none; }
+  .user-card-mobile { display: block; }
+
+  /* Formularios: una columna */
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .edit-card,
+  .delete-card {
+    padding: 18px;
+  }
+
+  .acciones-form {
+    flex-direction: column;
+  }
+
+  .acciones-form .btn {
+    width: 100%;
+    text-align: center;
+  }
+}

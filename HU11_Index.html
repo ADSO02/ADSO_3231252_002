@@ -16,8 +16,11 @@
 
 <div class="app">
 
-  <!-- SIDEBAR -->
-  <aside class="sidebar">
+  <!-- [NUEVO] Overlay para cerrar sidebar en móvil -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- SIDEBAR — [NUEVO] id="sidebar" -->
+  <aside class="sidebar" id="sidebar">
 
     <div class="logo">
       <img src="img/Group_2.png" alt="Logo">
@@ -49,6 +52,10 @@
   <div class="main">
 
     <header class="top-header">
+      <!-- [NUEVO] Botón hamburguesa — solo visible en móvil vía CSS -->
+      <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
       <h1>Gestión de Usuarios</h1>
     </header>
 
