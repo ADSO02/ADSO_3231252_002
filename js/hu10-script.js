@@ -12,6 +12,14 @@ const PAYMENTS = [
   { id: 'PAY-004', amount: 44000 }
 ];
 
+const USERS = [
+  { id: 'USR-001', username: 't_vxrgas' },
+  { id: 'USR-002', username: 'carlos_m' },
+  { id: 'USR-003', username: 'laura_p' },
+  { id: 'USR-004', username: 'andres_v' },
+  { id: 'USR-005', username: 'nuevo_usuario' }
+];
+
 function getTotalActiveReservations() {
   return ZONES.reduce((total, zone) => total + zone.reservations, 0);
 }
@@ -28,6 +36,10 @@ function getZoneOccupancyPct(zone) {
 function getAverageOccupancyPct() {
   const totalPct = ZONES.reduce((sum, zone) => sum + getZoneOccupancyPct(zone), 0);
   return Math.round(totalPct / ZONES.length);
+}
+
+function getRegisteredUsersCount() {
+  return USERS.length;
 }
 
 function renderCriterionOne() {
@@ -69,6 +81,13 @@ function renderCriterionThree() {
   }).join('');
 }
 
+function renderCriterionFour() {
+  const kpiEl = document.getElementById('kpi-users');
+  if (!kpiEl) return;
+  kpiEl.textContent = getRegisteredUsersCount().toLocaleString('es-CO');
+}
+
 renderCriterionOne();
 renderCriterionTwo();
 renderCriterionThree();
+renderCriterionFour();
