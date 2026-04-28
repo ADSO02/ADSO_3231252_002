@@ -20,6 +20,11 @@ const USERS = [
   { id: 'USR-005', username: 'nuevo_usuario' }
 ];
 
+const CURRENT_USER = {
+  username: 't_vxrgas',
+  role: 'admin'
+};
+
 function getTotalActiveReservations() {
   return ZONES.reduce((total, zone) => total + zone.reservations, 0);
 }
@@ -87,7 +92,37 @@ function renderCriterionFour() {
   kpiEl.textContent = getRegisteredUsersCount().toLocaleString('es-CO');
 }
 
-renderCriterionOne();
-renderCriterionTwo();
-renderCriterionThree();
-renderCriterionFour();
+function enforceAdminAccess() {
+  if (CURRENT_USER.role === 'admin') return true;
+
+  const content = document.querySelector('.content');
+  if (content) {
+    content.innerHTML = `
+      <div class="panel-card" style="max-width:640px; margin: 24px auto;">
+        <div class="panel-header">
+          <div class="panel-title">
+            <div class="panel-dot"></div>
+            Acceso restringido
+          </div>
+        </div>
+        <div class="panel-body">
+          <p style="font-size:14px; color:var(--text); line-height:1.6;">
+            Este modulo solo esta disponible para usuarios con rol administrador.
+          </p>
+          <p style="font-size:12px; color:var(--muted); margin-top:10px;">
+            Usuario actual: <strong>${CURRENT_USER.username}</strong> (${CURRENT_USER.role})
+          </p>
+        </div>
+      </div>
+    `;
+  }
+
+  return false;
+}
+
+if (enforceAdminAccess()) {
+  renderCriterionOne();
+  renderCriterionTwo();
+  renderCriterionThree();
+  renderCriterionFour();
+}
