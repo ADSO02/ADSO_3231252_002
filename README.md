@@ -152,7 +152,7 @@ Development follows industry-standard practices:
 ### Frontend
 
 * HTML5
-* CSS3
+* CSS
 * JavaScript
 * React
 
