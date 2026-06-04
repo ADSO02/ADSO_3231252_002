@@ -5,82 +5,125 @@
   <title>Cancelación de reservas</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Tipografías -->
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
-
-  <!-- CSS -->
   <link rel="stylesheet" href="css/HU07_style1.css">
 </head>
 
 <body>
 
-  <div class="app">
+<div class="app">
 
     <!-- SIDEBAR -->
     <aside class="sidebar">
+
   <div class="logo">
     <img src="../img/Group_2.png" alt="Parkalia Logo" class="logo-img" />
-    </div>
+  </div>
 
-      <p class="section-title">Principal</p>
-      <nav class="menu">
-        <a href="#" class="menu-item active">📊 Panel de control</a>
-        <a href="#" class="menu-item">🚗 Vehículos</a>
-        <a href="#" class="menu-item">📍 Zonas</a>
-      </nav>
+    <p class="section-title">PRINCIPAL</p>
+    <nav class="menu">
+      <a href="#" class="menu-item">🚗 Vehículos</a>
+      <a href="#" class="menu-item">&#11041; Zonas</a>
+    </nav>
 
-      <p class="section-title">Actividad</p>
-      <nav class="menu">
-        <a href="#" class="menu-item">📅 Reservaciones</a>
-        <a href="#" class="menu-item">💳 Pagos</a>
-        <a href="#" class="menu-item">📜 Historial</a>
-      </nav>
+    <p class="section-title">ACTIVIDAD</p>
+    <nav class="menu">
+      <a href="#" class="menu-item active">📅 Reservaciones</a>
+      <a href="#" class="menu-item">💳 Pagos</a>
+      <a href="#" class="menu-item">📜 Historial</a>
+    </nav>
 
-      <p class="section-title">Sistema</p>
+    <p class="section-title">SISTEMA</p>
       <nav class="menu">
         <a href="#" class="menu-item">👤 Usuarios</a>
         <a href="#" class="menu-item">⚙️ Configuración</a>
       </nav>
 
-    </aside>
+  </aside>
 
-    <!-- MAIN -->
-    <div class="main">
+  <!-- MAIN -->
+  <div class="main">
 
-      <!-- HEADER -->
-      <header class="top-header">
-        <h1>Cancelación de reservas</h1>
-      </header>
+    <header class="top-header">
+      <h1>Cancelación de reservas</h1>
+    </header>
 
-      <!-- CONTENIDO -->
-      <section class="content">
+    <section class="content">
+      <div class="alert-custom" id="alerta"></div>
 
-        <h2>Mis reservaciones</h2>
+      <div class="cards-container">
 
-        <div class="cards-container">
+        <!-- CARD 1 -->
+        <div class="card card-lista">
+          <div class="card-header">
+            <div class="step step-blue">1</div>
+            <h2>Seleccionar reserva</h2>
+          </div>
 
-          <!-- CARD 1 -->
-          <div class="card">
+          <div class="reservas-container"></div>
+        </div>
 
-            <div class="card-header">
-              <div class="step step-blue">1</div>
-              <h2>Seleccionar reserva</h2>
-            </div>
+        <!-- CARD 2 -->
+        <div class="card card-confirmacion" style="display:none;">
 
-            <!-- DINÁMICO -->
-            <div class="reservas-container"></div>
+          <div class="card-header">
+            <div class="step step-red">!</div>
+            <h2>Confirmar cancelación</h2>
+          </div>
+          <div class="basura">
+            🗑️
+          </div>
+          
+          <div class="parrafo">
+            <h2>Cancelar<br>Reserva</h2>
+          </div>
+          <p class="alerta"></p>
+          <div class="detalle-reserva"></div>
+          
+          
 
+          <div class="warning-card">
+            ⚠️ Esta acción no se puede <br> deshacer.
+          </div>
+
+          <div class="btn-group">
+            <button class="btn-volver">Volver</button>
+            <button class="btn-confirmar">Sí, <br> cancelar</button>
           </div>
 
         </div>
 
-      </section>
+        <!-- CARD 3 -->
+        <div class="card card-exito" style="display:none;">
 
-    </div>
+          <div class="card-header">
+            <div class="step step-green">✔</div>
+            <h2>Reserva cancelada</h2>
+          </div>
+
+          <div class="success-card">
+            <div class="success-icon">✅</div>
+            <h2>Reserva <br> cancelada</h2>
+            <p>El cupo ha sido liberado <br> correctamente</p>
+          </div>
+
+          <div class="detalle-exito"></div>
+
+          <div class="btn-group btn-group-vertical">
+            <button class="btn-ver-reservas">Ver reservas</button>
+            <button class="btn-inicio">Inicio</button>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
 
   </div>
 
-  <script src="js/HU07_script1.js"></script>
+</div>
+
+<script src="js/HU07_script1.js"></script>
 
 </body>
 </html>
