@@ -99,7 +99,6 @@ body {
   margin-bottom: 20px;
 }
 
-/* SUBCARDS */
 .cards {
   height: 150px;
   display: grid;
@@ -159,25 +158,21 @@ body {
 .card.inactivos h3 { color: #F85149; }
 .card.admins h3 { color: #FACC15; }
 
-/* 🔵 TOTAL */
 .card.total .icono {
   background: rgba(26, 111, 212, 0.15);
   color: #58A6FF;
 }
 
-/* 🟢 ACTIVOS */
 .card.activos .icono {
   background: rgba(35, 134, 54, 0.15);
   color: #3FB950;
 }
 
-/* 🔴 INACTIVOS */
 .card.inactivos .icono {
   background: rgba(218, 54, 51, 0.15);
   color: #F85149;
 }
 
-/* 🟡 ADMINS */
 .card.admins .icono {
   background: rgba(250, 204, 21, 0.15);
   color: #facc15;
@@ -322,16 +317,10 @@ body {
   width: fit-content;
 }
 
-/* ========================= */
-/* CONTROL DE VISTAS */
-/* ========================= */
 .oculto {
   display: none ;
 }
 
-/* ========================= */
-/* VISTA EDITAR (LAYOUT) */
-/* ========================= */
 #vista-editar {
   justify-content: center;
   align-items: center;
@@ -339,7 +328,6 @@ body {
   min-height: 60vh;
 }
 
-/* CARD CENTRADA */
 .edit-card {
   width: 100%;
   max-width: 520px;
@@ -382,7 +370,6 @@ body {
   font-size: 14px;
 }
 
-/* GRID */
 .form-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -396,7 +383,6 @@ body {
   margin-top: 20px;
 }
 
-/* BOTÓN BASE */
 .acciones-form .btn {
   padding: 10px 16px;
   border-radius: 8px;
@@ -405,7 +391,6 @@ body {
   transition: 0.2s;
 }
 
-/* CANCELAR (gris) */
 #cancelarEditar {
   border: 1px solid #30363D;
   background: transparent;
@@ -428,7 +413,6 @@ body {
   color: #fff;
 }
 
-/* BOTÓN CERRAR */
 #cerrarEditar {
   border: 1px solid #30363D;
   background: transparent;
@@ -440,11 +424,6 @@ body {
   color: #fff;
 }
 
-
-/* ========================= */
-/* VISTA TOGGLE */
-/* ========================= */
-
 #vista-toggle {
   justify-content: center;
   align-items: center;
@@ -452,7 +431,6 @@ body {
   min-height: 60vh;
 }
 
-/* Botón confirmar amarillo */
 #confirmarToggle {
   border: 1px solid #facc15;
   background: rgba(250,204,21,0.15);
@@ -485,9 +463,7 @@ body {
   background: #21262D;
   color: #fff;
 }
-/* ========================= */
-/* VISTA ELIMINAR */
-/* ========================= */
+
 #vista-eliminar {
   justify-content: center;
   align-items: center;
@@ -554,7 +530,6 @@ body {
   line-height: 1.4;
 }
 
-/* USER PREVIEW */
 .user-preview {
   display: flex;
   align-items: center;
@@ -568,7 +543,6 @@ body {
   margin: 15px 0;
 }
 
-/* BOTÓN FINAL ROJO */
 .delete-final {
   border: 1px solid #DA3633;
   background: rgba(218,54,51,0.2);
@@ -597,13 +571,6 @@ body {
   }
 }
 
-
-/* ================================================ */
-/* RESPONSIVE — solo adiciones, nada de lo anterior */
-/* fue modificado                                   */
-/* ================================================ */
-
-/* Hamburguesa — oculta en desktop */
 .hamburger {
   display: none;
   flex-direction: column;
@@ -622,7 +589,6 @@ body {
   border-radius: 2px;
 }
 
-/* Overlay oscuro al abrir sidebar en móvil */
 .sidebar-overlay {
   display: none;
   position: fixed;
@@ -634,13 +600,11 @@ body {
   display: block;
 }
 
-/* Sidebar abierto en móvil */
 .sidebar.open {
   transform: translateX(0) !important;
   box-shadow: 4px 0 24px rgba(0,0,0,0.5);
 }
 
-/* Tarjetas móvil — ocultas por defecto */
 .user-card-mobile {
   display: none;
   background: #161B22;
@@ -668,9 +632,6 @@ body {
 }
 .ucm-acciones { display: flex; gap: 8px; }
 
-/* ========================= */
-/* TABLET (≤ 900px)          */
-/* ========================= */
 @media (max-width: 900px) {
 
   .cards {
@@ -693,12 +654,8 @@ body {
   }
 }
 
-/* ========================= */
-/* MÓVIL (≤ 640px)           */
-/* ========================= */
 @media (max-width: 640px) {
 
-  /* Sidebar off-canvas */
   .sidebar {
     position: fixed;
     top: 0;
@@ -710,13 +667,11 @@ body {
     overflow-y: auto;
   }
 
-  /* Main ocupa todo el ancho */
   .main {
     width: 100%;
     overflow-y: auto;
   }
 
-  /* Header con hamburguesa */
   .hamburger {
     display: flex;
   }
@@ -727,12 +682,10 @@ body {
     padding: 14px 16px;
   }
 
-  /* Content más compacto */
   .content {
     padding: 16px;
   }
 
-  /* Cards 2 columnas */
   .cards {
     grid-template-columns: repeat(2, 1fr);
     height: auto;
@@ -741,7 +694,6 @@ body {
 
   .info h3 { font-size: 28px; }
 
-  /* Filtros en columna */
   .filtros {
     flex-direction: column;
     align-items: flex-start;
@@ -766,7 +718,6 @@ body {
   .fila         { display: none; }
   .user-card-mobile { display: block; }
 
-  /* Formularios: una columna */
   .form-grid {
     grid-template-columns: 1fr;
   }

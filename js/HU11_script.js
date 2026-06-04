@@ -1,14 +1,10 @@
-// =========================
 // USUARIO ACTUAL
-// =========================
 const usuarioActual = {
   nombre: "AdminUser",
   rol: "Administrador"
 };
 
-// =========================
 // DATOS
-// =========================
 let usuarios = [
   {
     nombre: "JosephGomez8",
@@ -36,17 +32,11 @@ let usuarios = [
   }
 ];
 
-// =========================
-// ESTADO GLOBAL
-// =========================
 let filtroActual = "todos";
 let textoBusqueda = "";
 let usuarioSeleccionado = null;
 let accionToggle = null;
 
-// =========================
-// [NUEVO] HAMBURGUESA
-// =========================
 const hamburger = document.getElementById("hamburger");
 const sidebar   = document.getElementById("sidebar");
 const overlay   = document.getElementById("sidebarOverlay");
@@ -115,9 +105,6 @@ function renderTarjetasMobil(lista) {
   });
 }
 
-// =========================
-// RENDER TABLA
-// =========================
 function renderTabla() {
 
   const cont = document.querySelector(".tabla-body");
@@ -171,7 +158,6 @@ function renderTabla() {
       cont.appendChild(row);
     });
 
-  // [NUEVO] también renderizar tarjetas móvil
   renderTarjetasMobil(lista);
 
   actualizarCards();
@@ -224,7 +210,7 @@ document.addEventListener("click", (e) => {
     document.getElementById("vista-editar").classList.remove("oculto");
   }
 
-  // 💾 GUARDAR EDITAR
+  // GUARDAR EDITAR
   if (e.target.id === "guardarEditar") {
 
     const user = usuarios[usuarioSeleccionado];
@@ -272,7 +258,6 @@ document.addEventListener("click", (e) => {
     document.getElementById("vista-toggle").classList.remove("oculto");
   }
 
-  // ✅ CONFIRMAR TOGGLE
   if (e.target.id === "confirmarToggle") {
 
     const user = usuarios[usuarioSeleccionado];
